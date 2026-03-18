@@ -1,6 +1,8 @@
 # Dark Craftworld
 
-A Black Library ebook reader in the browser. Displays the ebooks you legitimately purchased and therefore should be able to read on whatever device you want. It lets you read EPUBs directly, with reading progress tracked in localStorage.
+![Demo](misc/demo-gif.gif)
+
+A Black Library ebook reader/downloader in the browser. Displays the ebooks you legitimately purchased and therefore should be able to read on whatever device you want. It lets you read EPUBs directly, with reading progress tracked in localStorage.
 
 ## Why?
 
