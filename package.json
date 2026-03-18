@@ -1,0 +1,31 @@
+{
+  "name": "reverse-bl-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:host": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "node server/index.js",
+    "auth": "node auth.mjs"
+  },
+  "dependencies": {
+    "@vueuse/core": "^14.2.1",
+    "dotenv": "^17.3.1",
+    "epubjs": "^0.3.93",
+    "express": "^5.2.1",
+    "http-proxy-middleware": "^3.0.5",
+    "lucide-vue-next": "^0.577.0",
+    "vue": "^3.5.30",
+    "vue-i18n": "^11.3.0",
+    "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.2.1",
+    "@vitejs/plugin-vue": "^6.0.5",
+    "tailwindcss": "^4.2.1",
+    "vite": "^8.0.0"
+  }
+}
