@@ -71,12 +71,13 @@ const filteredBooks = computed(() => {
 
   if (filter.value !== 'all') {
     list = list.filter(b => {
-      const id = b.productId
-      const p = allProgress.value[id]
       switch (filter.value) {
-        case 'finished': return p?.finished
-        case 'reading': return p && !p.finished && p.percentage > 0
-        case 'unread': return !p || (!p.finished && (!p.percentage || p.percentage === 0))
+        case 'ebooks': return b.productType !== 'audiobook'
+        case 'audiobooks': return b.productType === 'audiobook'
+        case 'reading': {
+          const p = allProgress.value[b.productId]
+          return p && !p.finished && p.percentage > 0
+        }
         default: return true
       }
     })
@@ -89,7 +90,7 @@ function getProgress(book) {
   return allProgress.value[book.productId] || null
 }
 
-const filterKeys = ['all', 'reading', 'finished', 'unread']
+const filterKeys = ['all', 'ebooks', 'audiobooks', 'reading']
 
 const currentLocale = computed(() => locales.find(l => l.code === locale.value) || locales[0])
 const otherLocales = computed(() => locales.filter(l => l.code !== locale.value))

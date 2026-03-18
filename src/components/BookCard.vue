@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue'
-import { BookOpen, CheckCircle } from 'lucide-vue-next'
+import { BookOpen, CheckCircle, Headphones } from 'lucide-vue-next'
 
 const props = defineProps({
   book: { type: Object, required: true },
@@ -20,14 +20,18 @@ const statusLabel = computed(() => {
   return null
 })
 
+const isAudiobook = computed(() => props.book.productType === 'audiobook')
 const coverUrl = computed(() => props.book.imageLarge || props.book.imageSmall || null)
 const title = computed(() => props.book.title || 'Sans titre')
 const author = computed(() => props.book.authors?.map(a => a.name).join(', ') || '')
+const narrator = computed(() => props.book.narrators?.map(n => n.name).join(', ') || '')
 </script>
 
 <template>
   <router-link
-    :to="{ name: 'reader', params: { id: book.productId } }"
+    :to="isAudiobook
+      ? { name: 'audio', params: { id: book.productId } }
+      : { name: 'reader', params: { id: book.productId } }"
     class="group block bg-white dark:bg-neutral-800 rounded-xl overflow-hidden shadow-sm border border-neutral-200 dark:border-neutral-700 hover:shadow-lg hover:border-primary-400 dark:hover:border-primary-500 transition-all duration-300"
   >
     <div class="aspect-[2/3] bg-neutral-100 dark:bg-neutral-700 relative overflow-hidden">
@@ -40,6 +44,13 @@ const author = computed(() => props.book.authors?.map(a => a.name).join(', ') ||
       />
       <div v-else class="w-full h-full flex items-center justify-center text-neutral-400 dark:text-neutral-500">
         <BookOpen class="w-12 h-12" :stroke-width="1.2" />
+      </div>
+
+      <!-- Audiobook badge -->
+      <div v-if="isAudiobook" class="absolute top-2 left-2">
+        <span class="inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full backdrop-blur-sm bg-amber-500/90 text-white">
+          <Headphones class="w-3 h-3" />
+        </span>
       </div>
 
       <!-- Progress badge -->
@@ -68,6 +79,10 @@ const author = computed(() => props.book.authors?.map(a => a.name).join(', ') ||
         {{ title }}
       </h3>
       <p v-if="author" class="text-xs text-neutral-500 dark:text-neutral-400 mt-1 line-clamp-1">{{ author }}</p>
+      <p v-if="narrator" class="text-xs text-neutral-400 dark:text-neutral-500 mt-0.5 line-clamp-1 flex items-center gap-1">
+        <Headphones class="w-3 h-3 shrink-0" />
+        {{ narrator }}
+      </p>
     </div>
   </router-link>
 </template>
