@@ -33,7 +33,7 @@ This registers a handler for the `com.gamesworkshop.bl://` custom URI scheme, op
 
 ### Windows
 
-_I did not test this. If it does not work, let me know but I'm too lazy to boot on Windows right now._
+Thanks to [CRRaphael](https://github.com/CRRaphael) for testing (and fixing) the Windows setup script!
 
 Open Command Prompt in the project directory and run:
 
