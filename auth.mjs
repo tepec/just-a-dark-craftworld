@@ -54,7 +54,7 @@ const code = await new Promise((resolve, reject) => {
       clearTimeout(timeout)
       unwatchFile(CODE_FILE)
       const raw = readFileSync(CODE_FILE, 'utf-8').trim()
-      const url = new URL(raw)
+      const url = new URL(raw.replace(/^"+|"+$/g, ''))
       const authCode = url.searchParams.get('code')
       if (!authCode) reject(new Error('No code found in callback URL'))
       else resolve(authCode)
