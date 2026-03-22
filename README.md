@@ -60,6 +60,9 @@ npm install
 npm run dev
 ```
 
+⚠️ **Notice for Windows users:** I have updated the dependencies, so things should work as expected on Windows, HOWEVER people reported they had to use `npm install --force` on Windows specifically. I am still investigating on that.
+
+
 The app is available at http://localhost:5173
 
 If you want to expose it on your local network (e.g. to read on your phone or Kobo):
