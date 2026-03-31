@@ -31,6 +31,16 @@ Open a terminal in the project directory and run:
 
 This registers a handler for the `com.gamesworkshop.bl://` custom URI scheme, opens your browser to log in, and writes the tokens to `.env`.
 
+### macOS
+
+Open Terminal in the project directory and run:
+
+```bash
+./setup-auth-macos.sh
+```
+
+This creates and registers a small macOS app to handle the `com.gamesworkshop.bl://` custom URI scheme, opens your browser to log in, and writes the tokens to `.env`.
+
 ### Windows
 
 Thanks to [CRRaphael](https://github.com/CRRaphael) for testing (and fixing) the Windows setup script!
@@ -103,6 +113,7 @@ server/
   auth.js              # Auth0 token management + refresh
 auth.mjs                 # Auth flow (Node.js, PKCE + token exchange)
 setup-auth-linux.sh      # Linux: register URI handler + run auth
+setup-auth-macos.sh      # macOS: register URI handler + run auth
 setup-auth-windows.bat   # Windows: register URI handler + run auth
 ```
 
